@@ -1,0 +1,16 @@
+html, body {
+    background-color: #f4f4f4; /* Couleur de fond */
+}
+
+.container {
+    padding: 20px; /* Ajoute un peu de remplissage */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ajoute une ombre pour un effet visuel */
+    background-color: white; /* Couleur de fond pour le conteneur */
+    border-radius: 8px; /* Coins arrondis */
+    width: 100%; /* Utilise toute la largeur du parent */
+    max-width: 500px; /* Limite la largeur du conteneur */
+    position: absolute; /* Positionne par rapport au parent */
+    top: 50%; /* Positionne le conteneur au milieu de la page */
+    left: 50%; /* Positionne à gauche au milieu */
+    transform: translate(-50%, -50%); /* Ajustement pour centrer */
+}
