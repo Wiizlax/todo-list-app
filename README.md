@@ -28,7 +28,7 @@ git clone https://github.com/Wiizlax/todo-list-app.git
 ```
 Naviguez vers le dossier du projet :
 ```bash
-cd votre-nom-de-depot
+cd todo-list-app
 ```
 Installez les dépendances
 ```bash
@@ -36,5 +36,5 @@ npm install
 ```
 Lancez l'app:
 ```bash
-npm start
+npm run dev
 ```
