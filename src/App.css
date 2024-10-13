@@ -1,5 +1,7 @@
 html, body {
     background-color: #f4f4f4; /* Couleur de fond */
+    height: 100%; /* Assurez-vous que html et body occupent toute la hauteur */
+    margin: 0; /* Supprimez la marge par défaut */
 }
 
 .container {
@@ -13,4 +15,5 @@ html, body {
     top: 50%; /* Positionne le conteneur au milieu de la page */
     left: 50%; /* Positionne à gauche au milieu */
     transform: translate(-50%, -50%); /* Ajustement pour centrer */
+    margin-top: 64px;
 }
