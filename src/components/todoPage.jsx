@@ -128,7 +128,8 @@ function TodoPage() {
                 color="black"
                 primary={todo.text}
                 style={{
-                  textDecoration: todo.completed ? "line-through" : "none",
+                  textDecoration: todo.completed ? "line-through" : "none" ,
+                  color: todo.completed ? "grey" : "black",
                 }}
               />
             </ListItem>
