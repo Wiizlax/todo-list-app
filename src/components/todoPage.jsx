@@ -19,6 +19,7 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import CheckIcon from "@mui/icons-material/Check";
 import Confetti from "react-confetti";
+import { Helmet } from "react-helmet-async";
 import "../App.css";
 
 function TodoPage() {
@@ -80,8 +81,15 @@ function TodoPage() {
 
   return (
     <div>
+      <Helmet>
+        <title>Liste des tâches - Gérer vos tâches facilement</title>
+        <meta
+          name="description"
+          content="Ajoutez, complétez et supprimez des tâches avec notre gestionnaire de tâches simple et intuitif."
+        />
+      </Helmet>
       <Container maxWidth="sm" className="container">
-        <Typography variant="h4" color="black" align="center" gutterBottom>
+        <Typography variant="h5" color="black" align="center" gutterBottom>
           Todo List
         </Typography>
 
@@ -128,7 +136,7 @@ function TodoPage() {
                 color="black"
                 primary={todo.text}
                 style={{
-                  textDecoration: todo.completed ? "line-through" : "none" ,
+                  textDecoration: todo.completed ? "line-through" : "none",
                   color: todo.completed ? "grey" : "black",
                 }}
               />
@@ -169,12 +177,15 @@ function TodoPage() {
         </DialogActions>
       </Dialog>
 
-      <Dialog open={openCongratsDialog} onClose={handleCloseCongratsDialog}
+      <Dialog
+        open={openCongratsDialog}
+        onClose={handleCloseCongratsDialog}
         PaperProps={{
-            style: {
-            overflow: 'hidden',
-            },
-        }}>
+          style: {
+            overflow: "hidden",
+          },
+        }}
+      >
         <DialogTitle>Félicitations !</DialogTitle>
         <DialogContent>
           <DialogContentText>

@@ -1,6 +1,6 @@
 html, body {
     background-color: #f4f4f4; /* Couleur de fond */
-    height: 100vh; /* Assurez-vous que html et body occupent toute la hauteur */
+     /* Assurez-vous que html et body occupent toute la hauteur */
     margin: 0; /* Supprimez la marge par défaut */
 }
 
@@ -13,7 +13,6 @@ html, body {
     max-width: 500px; /* Limite la largeur du conteneur */
     position: absolute; /* Positionne par rapport au parent */
     top: 50%; /* Positionne le conteneur au milieu de la page */
-    max-height: 600px;
     left: 50%; /* Positionne à gauche au milieu */
     transform: translate(-50%, -50%); /* Ajustement pour centrer */
     margin-top: 64px;

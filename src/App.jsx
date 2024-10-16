@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { AppBar, Toolbar, Button } from '@mui/material';
 import { Suspense, lazy } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 
 // Lazy load des pages
 const TodoPage = lazy(() => import('./components/todoPage'));
@@ -8,6 +9,7 @@ const CalendarPage = lazy(() => import('./components/calendar'));
 
 function App() {
   return (
+    <HelmetProvider>
     <Router>
       <AppBar>
         <Toolbar style={{ display: 'flex', justifyContent: 'center' }}>
@@ -34,6 +36,7 @@ function App() {
         </Routes>
       </Suspense>
     </Router>
+    </HelmetProvider>
   );
 }
 
