@@ -1,22 +1,43 @@
-import { useState } from 'react';
+/* eslint-disable react/prop-types */
+import { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-const CalendarComponent = () => {
-  const [date, setDate] = useState(new Date());
-  const [activeStartDate, setActiveStartDate] = useState(new Date());
+const isValidDate = (date) => {
+  return date instanceof Date && !isNaN(date);
+};
 
-  // Fonction pour remettre la date à aujourd'hui et mettre à jour la vue
+const convertToDate = (dateString) => {
+  const [day, month, year] = dateString.split('/').map(Number);
+  return new Date(year, month - 1, day);
+};
+
+const CalendarComponent = ({ onDateChange, selectedDate }) => {
+  const initialDate = isValidDate(convertToDate(selectedDate)) ? convertToDate(selectedDate) : new Date();
+
+  const [date, setDate] = useState(initialDate);
+  const [activeStartDate, setActiveStartDate] = useState(initialDate);
+
+  useEffect(() => {
+    const newDate = convertToDate(selectedDate);
+    if (isValidDate(newDate)) {
+      setDate(newDate);
+      setActiveStartDate(newDate);
+    } else {
+      console.error('Invalid selectedDate:', selectedDate);
+    }
+  }, [selectedDate]);
+
   const resetToToday = () => {
     const today = new Date();
     setDate(today);
     setActiveStartDate(today);
-    console.log('Date remise à aujourd\'hui:', today);
+    onDateChange(today);
   };
 
   const handleDateChange = (newDate) => {
     setDate(newDate);
-    console.log('Date sélectionnée:', newDate);
+    onDateChange(newDate);  // Met à jour la date dans l'état global
   };
 
   return (

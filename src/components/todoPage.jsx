@@ -1,4 +1,5 @@
-import { useState } from "react";
+/* eslint-disable react/prop-types */
+import { useState, useEffect } from "react";
 import {
   TextField,
   Button,
@@ -22,7 +23,16 @@ import Confetti from "react-confetti";
 import { Helmet } from "react-helmet-async";
 import "../App.css";
 
-function TodoPage() {
+const saveTasks = (date, tasks) => {
+  localStorage.setItem(date, JSON.stringify(tasks));
+};
+
+const loadTasks = (date) => {
+  const tasks = localStorage.getItem(date);
+  return tasks ? JSON.parse(tasks) : [];
+};
+
+function TodoPage({ selectedDate }) {
   const [todos, setTodos] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -30,9 +40,17 @@ function TodoPage() {
   const [openCongratsDialog, setOpenCongratsDialog] = useState(false);
   const [deleteIndex, setDeleteIndex] = useState(null);
 
+  useEffect(() => {
+    // Charger les tâches associées à la date sélectionnée
+    const tasksForDate = loadTasks(selectedDate);
+    setTodos(tasksForDate);
+  }, [selectedDate]);
+
   const addTodo = () => {
     if (inputValue.trim()) {
-      setTodos([...todos, { text: inputValue, completed: false }]);
+      const newTodos = [...todos, { text: inputValue, completed: false }];
+      setTodos(newTodos);
+      saveTasks(selectedDate, newTodos); 
       setInputValue("");
       setOpenSnackbar(true);
     }
@@ -51,6 +69,7 @@ function TodoPage() {
     if (deleteIndex !== null) {
       const newTodos = todos.filter((_, i) => i !== deleteIndex);
       setTodos(newTodos);
+      saveTasks(selectedDate, newTodos);
       setDeleteIndex(null);
     }
     setOpenDialog(false);
@@ -66,6 +85,7 @@ function TodoPage() {
       i === index ? { ...todo, completed: !todo.completed } : todo
     );
     setTodos(newTodos);
+    saveTasks(selectedDate, newTodos);
 
     if (newTodos.every((todo) => todo.completed)) {
       setOpenCongratsDialog(true);
@@ -90,7 +110,7 @@ function TodoPage() {
       </Helmet>
       <Container maxWidth="sm" className="container">
         <Typography variant="h5" color="black" align="center" gutterBottom>
-          Todo List
+          Todo List - {selectedDate}
         </Typography>
 
         <Typography variant="h6" color="black" align="center" gutterBottom>
