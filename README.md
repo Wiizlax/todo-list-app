@@ -9,6 +9,8 @@ Ce projet en cours de développement est une application de gestion de tâches i
 - **Ajouter des Tâches** : Ajoutez des tâches à votre liste en remplissant un champ de texte.
 - **Marquer comme Complète** : Cochez les tâches terminées, qui seront barrées pour indiquer leur état de complétion.
 - **Supprimer des Tâches** : Supprimez les tâches de la liste via une interface conviviale de confirmation.
+- **Synchronisation avec le calendrier**
+Récupérez les tâches créées précédemment en sélectionnant la date correspondante dans le calendrier. La liste des tâches se mettra automatiquement à jour pour afficher les tâches associées à la date sélectionnée.
 - **Notifications** : Recevez une notification à l'écran à chaque fois qu'une nouvelle tâche est ajoutée.
 - **Confettis de Célébration** : Lorsque toutes les tâches sont complètes, un dialogue de félicitations apparaît avec des confettis en arrière-plan pour célébrer votre réussite.
 - **Navigation par Calendrier** : Sélectionnez une date via un calendrier intégré pour naviguer entre les dates.
